@@ -1,0 +1,89 @@
+<table class="table table-dark " style="margin-top: 50px;">
+  <thead >
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">birth</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Kind</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let cl of myinput; let i = index"  >
+  <tr >
+
+    <td >{{cl.firstName}}</td>
+    <td >{{cl.lastName}}</td>
+    <td >{{cl.email}}</td>
+    <td> {{cl.birth}} </td>
+    <td >{{cl.phone}}</td>
+    <td >{{cl.kind}}</td>
+    <td >  <button (click) ="deleteRow(i)" mat-icon-button color="accent"><mat-icon>delete_outline</mat-icon></button></td>
+    <td >   <button type="button" (click)="getuser(i)" mat-icon-button color="accent" data-toggle="modal" data-target="#myModal"><mat-icon>launch</mat-icon></button>
+    </td>
+  </tr>
+</tbody>
+</table>
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <form [formGroup]="profilForm">
+
+          <p >
+            <mat-form-field  class="hh "  >
+              <mat-label>first name</mat-label>
+              <input  matInput placeholder="first name" formControlName="firstName" required>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field  class="hh"  >
+              <mat-label>last name</mat-label>
+              <input  matInput placeholder="last name" formControlName="lastName" required>
+            </mat-form-field>
+
+          </p>
+          <p>
+            <mat-form-field class="hh"  >
+              <mat-label>email</mat-label>
+              <input type="email"  matInput placeholder="Ex. pat@example.com" formControlName="email" required>
+
+            </mat-form-field>
+
+          </p>
+          <p>
+            <mat-form-field  class="hh"  >
+              <mat-label>Date</mat-label>
+              <input type="date"  matInput placeholder="Date" formControlName="birth" required>
+            </mat-form-field>
+
+          </p>
+          <p>
+            <mat-form-field  class="hh"  >
+              <mat-label>phone</mat-label>
+              <input type="number"  matInput placeholder="phone" formControlName="phone" required>
+            </mat-form-field>
+
+          </p>
+
+          <mat-radio-group aria-label="Select an option" class="hh1" formControlName="kind" required>
+
+            <mat-radio-button  value="Man">Man</mat-radio-button>
+            <mat-radio-button value="Women">Women</mat-radio-button>
+          </mat-radio-group>
+          <div class="example-button-row" >
+
+            <button (click)="update()" data-dismiss="modal" class="center" mat-raised-button color="accent">UpDate</button>
+            <button type="button" mat-raised-button color="accent" data-dismiss="modal">Close</button>
+
+          </div>
+          </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>

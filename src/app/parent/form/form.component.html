@@ -1,0 +1,62 @@
+<form [formGroup]="profileForm">
+
+  <p >
+    <mat-form-field appearance="outline" class="hh "  >
+      <mat-label>first name</mat-label>
+      <input  matInput placeholder="first name" formControlName="firstName" required>
+      <mat-icon matSuffix color="accent">sentiment_very_satisfied</mat-icon>
+      <mat-error *ngIf="profileForm.hasError('required', 'firstName')">You must enter a value </mat-error>
+
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline" class="hh"  >
+      <mat-label>last name</mat-label>
+      <input  matInput placeholder="last name" formControlName="lastName" required>
+      <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-error *ngIf="profileForm.hasError('required', 'lastName')">You must enter a value    </mat-error>
+
+    </mat-form-field>
+
+  </p>
+  <p>
+    <mat-form-field appearance="outline" class="hh"  >
+      <mat-label>email</mat-label>
+      <input type="email"  matInput placeholder="Ex. pat@example.com" formControlName="email" required>
+      <mat-icon color="accent" matSuffix>email</mat-icon>
+      <mat-error *ngIf="profileForm.hasError('required', 'email')">You must enter a value</mat-error>
+
+    </mat-form-field>
+
+  </p>
+  <p>
+    <mat-form-field appearance="outline" class="hh"  >
+      <mat-label>Date</mat-label>
+      <input type="date"  matInput placeholder="Date" formControlName="birth" required>
+      <mat-icon color="accent" matSuffix>calendar_today</mat-icon>
+      <mat-error *ngIf="profileForm.hasError('required', 'birth')">You must enter a value</mat-error>
+
+    </mat-form-field>
+
+  </p>
+  <p>
+    <mat-form-field appearance="outline" class="hh"  >
+      <mat-label>phone</mat-label>
+      <input type="text"  matInput placeholder="phone" formControlName="phone" required>
+      <mat-icon color="accent" matSuffix>phone</mat-icon>
+      <mat-error *ngIf="profileForm.hasError('required', 'phone')">Phone number is required</mat-error>
+
+    </mat-form-field>
+
+  </p>
+
+  <mat-radio-group aria-label="Select an option" class="hh1" formControlName="kind" required>
+    Kind:
+    <mat-radio-button  value="Man">Man</mat-radio-button>
+    <mat-radio-button value="Women">Women</mat-radio-button>
+  </mat-radio-group>
+  <div class="example-button-row" >
+
+    <button (click)="add()" class="center" mat-raised-button [disabled]='!profileForm.valid' color="accent">ADD</button>
+  </div>
+  </form>
